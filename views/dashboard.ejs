@@ -1,0 +1,126 @@
+<div id="loader" class="text-center py-5" style="margin-top: 100px;">
+    <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;"></div>
+    <h4 class="mt-3 text-muted">Verifying Crowbar Membership...</h4>
+</div>
+
+<div id="app" style="display:none;" class="container py-5">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card border-0 shadow-sm rounded-4 p-3">
+                <div class="d-flex align-items-center gap-3 mb-4">
+                    <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" style="width:50px; height:50px; font-weight:bold; font-size: 1.2rem;">DR</div>
+                    <div>
+                        <h6 class="mb-0 fw-bold">Provider</h6>
+                        <small class="text-success">● Active</small>
+                    </div>
+                </div>
+                <div class="list-group list-group-flush">
+                    <a href="#" class="list-group-item list-group-item-action fw-bold text-primary border-0 bg-light rounded mb-1">
+                        <i class="bi bi-grid-fill me-2"></i> Overview
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action border-0 text-muted">
+                        <i class="bi bi-briefcase me-2"></i> Open Bids
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action border-0 text-muted">
+                        <i class="bi bi-people me-2"></i> Patients
+                    </a>
+                    <a href="#" onclick="logout()" class="list-group-item list-group-item-action border-0 text-danger mt-3">
+                        <i class="bi bi-box-arrow-right me-2"></i> Logout
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <div class="alert alert-success d-flex align-items-center gap-2 border-0 shadow-sm mb-4">
+                <i class="bi bi-shield-check-fill fs-5"></i>
+                <div>
+                    <strong>Access Granted:</strong> Identity verified via Crowbar Network.
+                </div>
+            </div>
+
+            <h3 class="fw-bold mb-4">Dashboard Overview</h3>
+
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm p-4 h-100">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h6 class="text-muted text-uppercase small fw-bold">Active Bids</h6>
+                            <i class="bi bi-send text-primary"></i>
+                        </div>
+                        <h2 class="text-dark fw-bold mb-0">12</h2>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm p-4 h-100">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h6 class="text-muted text-uppercase small fw-bold">Total Earnings</h6>
+                            <i class="bi bi-cash-stack text-success"></i>
+                        </div>
+                        <h2 class="text-success fw-bold mb-0">$850</h2>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm p-4 h-100">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h6 class="text-muted text-uppercase small fw-bold">Provider Rating</h6>
+                            <i class="bi bi-star-fill text-warning"></i>
+                        </div>
+                        <h2 class="text-dark fw-bold mb-0">4.9</h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card border-0 shadow-sm mt-4">
+                <div class="card-header bg-white border-0 py-3">
+                    <h5 class="mb-0 fw-bold">Recent Opportunities</h5>
+                </div>
+                <div class="card-body p-0">
+                    <div class="list-group list-group-flush">
+                        <div class="list-group-item p-3 border-0 border-bottom">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6 class="mb-1 fw-bold">Elderly Care Assistance</h6>
+                                    <small class="text-muted">Posted 2 hours ago • Long Term</small>
+                                </div>
+                                <span class="badge bg-light text-dark border">Pending</span>
+                            </div>
+                        </div>
+                        <div class="list-group-item p-3 border-0">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6 class="mb-1 fw-bold">Post-Surgery Rehabilitation</h6>
+                                    <small class="text-muted">Posted 5 hours ago • One-time</small>
+                                </div>
+                                <span class="badge bg-light text-dark border">Pending</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    // --- GATEKEEPER LOGIC ---
+    const session = localStorage.getItem('careduel_session');
+    
+    if(!session) {
+        // If no session, kick them out immediately
+        window.location.href = '/login';
+    } else {
+        // Simulate a secure API check
+        setTimeout(() => {
+            document.getElementById('loader').style.display = 'none';
+            document.getElementById('app').style.display = 'block';
+        }, 1000);
+    }
+
+    function logout() {
+        localStorage.removeItem('careduel_session');
+        localStorage.removeItem('careduel_user');
+        window.location.href = '/login';
+    }
+</script>
