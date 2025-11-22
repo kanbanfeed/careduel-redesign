@@ -1,5 +1,5 @@
 <style>
-    /* Page-Specific Styles for Login */
+    /* --- LOGIN STYLES --- */
     .login-wrapper {
         min-height: 100vh;
         overflow: hidden;
@@ -18,86 +18,49 @@
     }
 
     .visual-overlay {
-        position: absolute;
-        top: 0; left: 0; width: 100%; height: 100%;
+        position: absolute; top: 0; left: 0; width: 100%; height: 100%;
         background: linear-gradient(to bottom, rgba(15, 23, 42, 0.4), rgba(15, 23, 42, 0.9));
         z-index: 1;
     }
 
-    .visual-content {
-        position: relative;
-        z-index: 2;
-    }
+    .visual-content { position: relative; z-index: 2; }
 
     .form-side {
         background: white;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 40px;
+        display: flex; align-items: center; justify-content: center; padding: 40px;
     }
 
-    .login-container {
-        width: 100%;
-        max-width: 420px;
-    }
+    .login-container { width: 100%; max-width: 420px; }
 
     .form-control-custom {
-        padding: 15px;
-        border: 1px solid #e2e8f0;
-        border-radius: 12px;
-        background-color: #f8fafc;
-        font-size: 0.95rem;
-        transition: 0.3s;
+        padding: 15px; border: 1px solid #e2e8f0; border-radius: 12px;
+        background-color: #f8fafc; font-size: 0.95rem; transition: 0.3s;
     }
-
     .form-control-custom:focus {
-        background-color: white;
-        border-color: var(--accent-color, #2563eb);
-        box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
-        outline: none;
+        background-color: white; border-color: var(--accent-color, #2563eb);
+        box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1); outline: none;
     }
 
     .btn-login-custom {
-        padding: 15px;
-        font-weight: 600;
-        font-size: 1rem;
-        border-radius: 12px;
-        background-color: #0f172a; /* Navy */
-        color: white;
-        border: none;
-        width: 100%;
-        margin-top: 10px;
-        transition: 0.3s;
+        padding: 15px; font-weight: 600; font-size: 1rem; border-radius: 12px;
+        background-color: #0f172a; color: white; border: none; width: 100%;
+        margin-top: 10px; transition: 0.3s;
     }
-
     .btn-login-custom:hover {
-        background-color: #2563eb; /* Royal Blue on hover */
-        transform: translateY(-2px);
+        background-color: #2563eb; transform: translateY(-2px);
         box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
     }
 
     .register-link {
-        display: block;
-        margin-top: 30px;
-        text-align: center;
-        padding: 20px;
-        border-radius: 12px;
-        border: 1px dashed #cbd5e1;
-        color: #64748b;
-        font-size: 0.9rem;
-        transition: 0.3s;
+        display: block; margin-top: 30px; text-align: center; padding: 20px;
+        border-radius: 12px; border: 1px dashed #cbd5e1; color: #64748b;
+        font-size: 0.9rem; transition: 0.3s;
     }
-
-    .register-link:hover {
-        border-color: #2563eb;
-        color: #0f172a;
-        background: #f0f9ff;
-    }
+    .register-link:hover { border-color: #2563eb; color: #0f172a; background: #f0f9ff; }
 
     @media (max-width: 991px) {
-        .visual-side { display: none; } /* Hide image on mobile */
-        .login-wrapper { min-height: 85vh; }
+        .visual-side { display: none; }
+        .login-wrapper { min-height: 100vh; }
     }
 </style>
 
@@ -107,20 +70,10 @@
         <div class="col-lg-6 visual-side">
             <div class="visual-overlay"></div>
             <div class="visual-content">
-                <div class="mb-4">
-                    <i class="bi bi-quote fs-1 text-white opacity-50"></i>
-                </div>
-                <h2 class="text-white fw-bold mb-3">Streamline your practice.</h2>
+                <h2 class="text-white fw-bold mb-3">Care at the speed of life.</h2>
                 <p class="lead text-white opacity-75 mb-4">
-                    Join over 5,000 certified providers managing appointments, billing, and patient records in one secure ecosystem.
+                    Join thousands of providers managing appointments and patient care seamlessly.
                 </p>
-                <div class="d-flex align-items-center gap-3">
-                    <div class="d-flex">
-                         <img src="https://randomuser.me/api/portraits/women/44.jpg" class="rounded-circle border border-2 border-white" width="40" alt="User">
-                         <img src="https://randomuser.me/api/portraits/men/32.jpg" class="rounded-circle border border-2 border-white ms-n3" style="margin-left: -15px;" width="40" alt="User">
-                    </div>
-                    <small class="text-white fw-bold">Used by top clinics globally</small>
-                </div>
             </div>
         </div>
 
@@ -130,26 +83,28 @@
                     <div class="mb-3">
                          <i class="bi bi-heart-pulse-fill text-primary fs-1"></i>
                     </div>
-                    <h2 class="fw-bold text-dark">Provider Portal</h2>
-                    <p class="text-muted">Welcome back. Please enter your details.</p>
+                    
+                    <h2 class="fw-bold text-dark">Welcome to CareDuel</h2>
+                    
+                    <p class="text-muted">Please sign in to access the Provider Portal.</p>
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label fw-bold small text-uppercase text-muted" style="font-size: 0.75rem; letter-spacing: 1px;">Crowbar Email</label>
-                    <input type="email" id="email" class="form-control-custom w-100" placeholder="dr.smith@clinic.com">
+                    <label class="form-label fw-bold small text-uppercase text-muted">Crowbar Email</label>
+                    <input type="email" id="email" class="form-control-custom w-100" placeholder="dr.name@example.com">
                 </div>
 
                 <div class="mb-4">
-                    <label class="form-label fw-bold small text-uppercase text-muted" style="font-size: 0.75rem; letter-spacing: 1px;">Password</label>
+                    <label class="form-label fw-bold small text-uppercase text-muted">Password</label>
                     <input type="password" id="password" class="form-control-custom w-100" placeholder="••••••••••">
                 </div>
 
                 <button id="loginBtn" class="btn-login-custom">
-                    Sign In to Dashboard
+                    Sign In
                 </button>
 
                 <a href="https://crowbar-master-site.vercel.app/register" target="_blank" class="register-link text-decoration-none">
-                    <span class="fw-bold">New Provider?</span> Apply for a Crowbar ID <i class="bi bi-arrow-right ms-1"></i>
+                    <span class="fw-bold">New Provider?</span> Create Crowbar ID <i class="bi bi-arrow-right ms-1"></i>
                 </a>
 
                 <p id="msg" class="text-center mt-4 small fw-bold" style="min-height: 20px;"></p>
@@ -159,9 +114,7 @@
 </div>
 
 <script>
-    // --- CONFIGURATION ---
     const SB_URL = 'https://zfxnhbymlhvukeqmsyhj.supabase.co';
-    // ⚠️ ENSURE YOUR KEY IS PASTED HERE ⚠️
     const SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpmeG5oYnltbGh2dWtlcW1zeWhqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjE4MTIyMTIsImV4cCI6MjA3NzM4ODIxMn0.kKB1RsLvXJuROPlBY5bWeBzTWDGGe_UTouWkfSc7RXs'; 
     
     const client = supabase.createClient(SB_URL, SB_KEY);
@@ -178,8 +131,7 @@
             return;
         }
 
-        btn.innerText = "Verifying Identity...";
-        btn.style.opacity = "0.7";
+        btn.innerText = "Verifying...";
         msg.innerText = "";
 
         const { data, error } = await client.auth.signInWithPassword({ email, password });
@@ -187,11 +139,10 @@
         if(error) {
             msg.innerText = error.message;
             msg.style.color = "#ef4444";
-            btn.innerText = "Sign In to Dashboard";
-            btn.style.opacity = "1";
+            btn.innerText = "Sign In";
         } else {
             msg.innerText = "Success! Redirecting securely...";
-            msg.style.color = "#10b981"; // Green
+            msg.style.color = "#10b981";
             
             localStorage.setItem('careduel_session', data.session.access_token);
             localStorage.setItem('careduel_user', JSON.stringify(data.user));
