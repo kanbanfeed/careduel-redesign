@@ -26,9 +26,25 @@ app.get('/', (req, res) => {
     res.render('index', { title: 'Home' });
 });
 
-// 2. Login (Hide Header/Footer)
 app.get('/login', (req, res) => {
-    res.render('login', { title: 'Login', hideLayout: true });
+    
+    const protocol = req.headers['x-forwarded-proto'] || 'http';
+    const host = req.headers['x-forwarded-host'] || req.get('host');
+    const baseUrl = `${protocol}://${host}`;
+    
+    
+    const returnUrl = `${baseUrl}/auth/callback`;
+    
+    
+    const encodedUrl = encodeURIComponent(returnUrl);
+    
+    // 4. Redirect to Crowbar Master Login
+   
+    res.redirect(`https://www.crowbarltd.com/login?redirect_to=${encodedUrl}`);
+});
+
+app.get('/auth/callback', (req, res) => {
+    res.render('callback', { title: 'Syncing Identity...' });
 });
 
 // 3. Dashboard (Protected)
