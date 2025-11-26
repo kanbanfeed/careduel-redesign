@@ -27,24 +27,20 @@ app.get('/', (req, res) => {
 });
 
 app.get('/login', (req, res) => {
-    
     const protocol = req.headers['x-forwarded-proto'] || 'http';
     const host = req.headers['x-forwarded-host'] || req.get('host');
     const baseUrl = `${protocol}://${host}`;
     
-    
+    // IMPORTANT: This points to CareDuel's callback
     const returnUrl = `${baseUrl}/auth/callback`;
-    
-    
     const encodedUrl = encodeURIComponent(returnUrl);
     
-    // 4. Redirect to Crowbar Master Login
-   
     res.redirect(`https://www.crowbarltd.com/login?redirect_to=${encodedUrl}`);
 });
 
 app.get('/auth/callback', (req, res) => {
-    res.render('callback', { title: 'Syncing Identity...' });
+    // Pass the title so layout.ejs doesn't crash
+    res.render('callback', { title: 'Verifying...' });
 });
 
 // 3. Dashboard (Protected)
