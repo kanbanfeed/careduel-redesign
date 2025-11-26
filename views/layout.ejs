@@ -28,9 +28,10 @@
                     <span>CareDuel.</span>
                 </a>
                 
-                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+                <button class="navbar-toggler collapsed border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"><div></div></span>
+</button>
+
 
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto align-items-center gap-4">
@@ -109,6 +110,32 @@
             window.location.href = '/';
         }
     </script>
+    <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // 1) Ensure login/logout buttons move into collapse area on small screens for better UX
+    const collapseEl = document.getElementById('navbarNav');
+    const navLogin = document.getElementById('nav-login-btn');
+    const navLogout = document.getElementById('nav-logout-btn');
+
+    // If collapse exists and login exists, ensure they're present inside collapse (for mobile)
+    if (collapseEl && navLogin) {
+      const ul = collapseEl.querySelector('.navbar-nav') || collapseEl.querySelector('ul') || null;
+      if (ul && !ul.contains(navLogin)) {
+        // create a wrapper li if needed
+        const li = document.createElement('li');
+        li.className = 'nav-item d-lg-none mt-2'; // visible only on mobile
+        // move login button into that li
+        li.appendChild(navLogin);
+        ul.appendChild(li);
+      }
+    }
+
+    // 2) Toggler icon collapsed class animation (Bootstrap already toggles, but be sure to set initial)
+    const toggler = document.querySelector('.navbar-toggler');
+    
+  });
+</script>
+
 
 </body>
 </html>
